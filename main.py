@@ -14,12 +14,16 @@ class UnitConverterApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Unit Converter")
-        self.root.geometry("600x550")
+        self.root.geometry("600x500")
         self.root.resizable(False, False)
         
-        # Set style
+        # Set style and unify background colors for ttk widgets
         style = ttk.Style()
         style.theme_use('clam')
+        # Use the root background so ttk frames/labels match
+        bg_color = self.root.cget('bg')
+        style.configure('TFrame', background=bg_color)
+        style.configure('TLabel', background=bg_color)
         
         self.setup_ui()
     
@@ -73,11 +77,11 @@ class UnitConverterApp:
         
         # Result display
         ttk.Label(main_frame, text="Result:", font=("Arial", 10, "bold")).grid(row=6, column=0, sticky=tk.W, pady=5)
-        self.result_frame = ttk.Frame(main_frame, relief=tk.SUNKEN, borderwidth=2)
-        self.result_frame.grid(row=7, column=0, columnspan=3, sticky=(tk.W, tk.E), pady=5)
-        
-        self.result_text = tk.Text(self.result_frame, height=4, width=50, state=tk.DISABLED)
-        self.result_text.pack(fill=tk.BOTH, expand=False, padx=5, pady=5)
+        self.result_frame = ttk.Frame(main_frame, style='TFrame', relief=tk.SUNKEN, borderwidth=2)
+        self.result_frame.grid(row=7, column=0, columnspan=3, sticky=(tk.W, tk.E, tk.N, tk.S), pady=5)
+
+        self.result_text = tk.Text(self.result_frame, height=6, width=50, state=tk.DISABLED)
+        self.result_text.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
         
         # Initialize units
         self.update_units()
