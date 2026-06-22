@@ -8,7 +8,7 @@ class CurrencyConverter:
     API_URL = "https://api.exchangerate-api.com/v4/latest"
     COMMON_CURRENCIES = [
         'USD', 'EUR', 'GBP', 'JPY', 'AUD', 'CAD', 'CHF', 'CNY',
-        'INR', 'MXN', 'BRL', 'SGD', 'HKD', 'NZD', 'KRW', 'SEK'
+        'INR', 'BDT', 'MXN', 'BRL', 'SGD', 'HKD', 'NZD', 'KRW', 'SEK'
     ]
     
     @staticmethod
